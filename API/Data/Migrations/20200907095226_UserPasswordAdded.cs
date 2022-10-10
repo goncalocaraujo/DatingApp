@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
 namespace API.Data.Migrations
 {
     public partial class UserPasswordAdded : Migration
@@ -13,15 +11,13 @@ namespace API.Data.Migrations
                 name: "PasswordHash",
                 table: "Users",
                 type: "BLOB",
-                nullable: true,
-                defaultValue: new byte[0]);
+                nullable: true);
 
             migrationBuilder.AddColumn<byte[]>(
-                name: "Passwordsalt",
+                name: "PasswordSalt",
                 table: "Users",
                 type: "BLOB",
-                nullable: true,
-                defaultValue: new byte[0]);
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -31,7 +27,7 @@ namespace API.Data.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "Passwordsalt",
+                name: "PasswordSalt",
                 table: "Users");
         }
     }
