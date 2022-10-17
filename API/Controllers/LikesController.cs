@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTOs;
@@ -27,8 +26,8 @@ namespace API.Controllers
         {
             var sourceUserId = User.GetUserId();
             var likedUser = await _userRepository.GetUserByUsernameAsync(username);
-            var sourceUser = await _likesRepository.GetUserWithLiks(sourceUserId);
-
+            var sourceUser = await _likesRepository.GetUserWithLikes(sourceUserId);
+            
             if (likedUser == null) return NotFound();
 
             if (sourceUser.UserName == username) return BadRequest("You cannot like yourself");
@@ -39,7 +38,7 @@ namespace API.Controllers
 
             userLike = new UserLike
             {
-                sourceUserId = sourceUserId,
+                SourceUserId = sourceUserId,
                 LikedUserId = likedUser.Id
             };
 

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221012152720_LikeEntityAdded")]
+    [Migration("20200914030759_LikeEntityAdded")]
     partial class LikeEntityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,13 +95,13 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.UserLike", b =>
                 {
-                    b.Property<int>("sourceUserId")
+                    b.Property<int>("SourceUserId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("LikedUserId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("sourceUserId", "LikedUserId");
+                    b.HasKey("SourceUserId", "LikedUserId");
 
                     b.HasIndex("LikedUserId");
 
@@ -127,7 +127,7 @@ namespace API.Data.Migrations
 
                     b.HasOne("API.Entities.AppUser", "SourceUser")
                         .WithMany("LikedUsers")
-                        .HasForeignKey("sourceUserId")
+                        .HasForeignKey("SourceUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

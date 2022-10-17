@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTOs;
@@ -10,7 +9,7 @@ namespace API.Interfaces
     public interface ILikesRepository
     {
         Task<UserLike> GetUserLike(int sourceUserId, int likedUserId);
-        Task<AppUser> GetUserWithLiks(int userId);
+        Task<AppUser> GetUserWithLikes(int userId);
         Task<PagedList<LikeDto>> GetUserLikes(LikesParams likesParams);
     }
 }
